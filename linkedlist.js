@@ -151,7 +151,8 @@ function main() {
   // console.log(findPrevious('Apollo', SLL))
   // console.log(findLast(SLL))
   // console.log(listReverser(SLL))
-  console.log(middle(SLL))
+  // console.log(middleOfList(SLL))
+  console.log(cycleList(SLL))
 }
 
 function printLL(list){
@@ -181,19 +182,16 @@ function size(list){
 }
 
 function isEmpty(list){
-
   let curr = list.head
   let empty = true
 
   if(curr !== null){
     empty = false
   }
-
   return empty
 }
 
 function findPrevious(item, list){
-
   let curr = list.head
   let prev = list.head
 
@@ -205,20 +203,16 @@ function findPrevious(item, list){
     prev = curr
     curr = curr.next
   }
-
   return prev.value
 }
 
 function findLast(list){
-
     curr = list.head
 
     while(curr.next !== null){
       curr = curr.next
     }
-
     return curr.value
-
 }
 
 function listReverser(list){ 
@@ -232,7 +226,6 @@ function listReverser(list){
     prev = curr 
     curr = next 
   }
-
   list.head = prev
   return prev
 }
@@ -259,8 +252,20 @@ function middleOfList(list){
     }
     middleElement = curr
   }
-
   return middleElement
+}
+
+function cycle(list) {
+  let curr = list.head;
+  let checkList = [];
+
+  while(curr !== null) {
+    if(checkList.includes(cur.next)) {
+      return 'It is cycle'
+    }
+    checkList.push(curr)
+    curr = curr.next
+  }
 }
 
 main();
