@@ -42,6 +42,38 @@ class LinkedList {
     prevNode.next = new _Node(item, currNode);
   }
 
+  insertAfter(item, key) {
+    let currNode = this.head;
+    let nextNode = this.head;
+
+    if (this.head.value === key) {
+      this.insertFirst(item);
+    } else {
+      while((currNode !== null) && (currNode.value !== key)) {
+        nextNode = currNode
+        currNode = currNode.next
+      }
+    }
+    currNode.next = new _Node(item, nextNode);
+  }
+
+  insertAt(item, position){
+    
+    let currNode = this.head
+    let nextNode = this.head
+    let counter = 0
+
+    while((currNode !== null)&&(counter !== (position))) {
+        nextNode = currNode
+        currNode = currNode.next
+        counter++
+    }
+    currNode.next = new _Node(item, currNode.next.next)
+    console.log(counter)
+
+    return currNode
+  }
+
   find(item) { 
     // Start at the head
     let currNode = this.head;
@@ -86,7 +118,7 @@ class LinkedList {
         currNode = currNode.next;
     }
     if (currNode === null) {
-        console.log('Item not found');
+        //console.log('Item not found');
         return;
     }
     previousNode.next = currNode.next;
@@ -105,9 +137,14 @@ function main() {
   SLL.insertFirst('Starbuck')
   SLL.insertFirst('Tauhida')
   SLL.remove('squirrel')
-  SLL.insertBefore('Coffee', 'squirrel')
+  SLL.insertBefore('squirrel', 'Husker')
+  SLL.insertAfter('ships', 'Helo')
 
-  console.log(SLL.find('Coffee','squirrel'));
+  //console.log(SLL.find('ships'));
+  //console.log(SLL.find('Helo'));
+  //console.log(SLL.find('Husker'));
+  console.log(SLL.insertAt('rocks',2))
+  console.log(SLL.find('rocks'));
 
 }
 
