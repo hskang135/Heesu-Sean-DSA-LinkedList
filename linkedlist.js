@@ -63,7 +63,7 @@ class LinkedList {
     let prevNode = this.head
     let counter = 0
 
-    while((currNode !== null)&&(counter !== (position-1))) {
+    while((currNode !== null)&&(counter !== (position))) {
         prevNode = currNode
         currNode = currNode.next
         counter++
@@ -139,13 +139,18 @@ function main() {
   SLL.insertAfter('Hotdog', 'Helo')
   SLL.insertAt('Kat',3)
   SLL.remove('Tauhida')
-  //console.log(SLL.find('ships'));
-  //console.log(SLL.find('Helo'));
-  //console.log(SLL.find('Husker'));
-  //console.log(SLL.insertAt('rocks',2))
-  //console.log(SLL.find('rocks'));
+  SLL.remove('Apllo')
 
   printLL(SLL)
+
+  // console.log(size(SLL))
+  // console.log(isEmpty(SLL))
+
+  // let m = new LinkedList
+  // console.log(isEmpty(m))
+  // console.log(findPrevious('Apollo', SLL))
+  // console.log(findLast(SLL))
+  console.log(listReverser(SLL))
 }
 
 function printLL(list){
@@ -161,4 +166,92 @@ function printLL(list){
 
 }
 
+function size(list){
+
+  let curr = list.head
+  let counter = 0
+
+  while(curr !== null){
+    curr = curr.next
+    counter++
+  }
+
+  return counter
+}
+
+function isEmpty(list){
+
+  let curr = list.head
+  let empty = true
+
+  if(curr !== null){
+    empty = false
+  }
+
+  return empty
+}
+
+function findPrevious(item, list){
+
+  let curr = list.head
+  let prev = list.head
+
+  if(list.head === null){
+    return
+  }
+
+  while((curr !== null) && (curr.value !== item)){
+    prev = curr
+    curr = curr.next
+  }
+
+  return prev.value
+}
+
+function findLast(list){
+
+    curr = list.head
+
+    while(curr.next !== null){
+      curr = curr.next
+    }
+
+    return curr.value
+
+}
+
+function listReverser(list){
+
+    let newList = new LinkedList
+    newList = list
+    console.log(newList)
+    let curr = newList.head
+    let prev = newList.head
+    let counter = 0
+
+    // if(curr){
+    //   curr.next = null
+    // }
+
+    while(curr.next !== null){
+      prev = curr
+      curr = curr.next
+      counter++
+    }
+    while(curr.next !== null){
+      curr.next = prev
+    }
+
+    return newList
+
+
+}
+
+
 main();
+
+/*
+
+4)  Program removes duplicate values from an ordered linked list
+
+*/
