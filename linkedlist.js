@@ -34,7 +34,7 @@ class LinkedList {
     if (this.head.value === key) {
       this.insertFirst(item);
     } else {
-      while((currNode.next !== null) && (currNode.value !== key)) {
+      while((currNode !== null) && (currNode.value !== key)) {
         prevNode = currNode
         currNode = currNode.next
       }
@@ -49,13 +49,12 @@ class LinkedList {
     if (this.head.value === key) {
       this.insertFirst(item);
     } else {
-      while((currNode.next !== null) && (currNode.value !== key)) {
+      while((currNode !== null) && (currNode.value !== key)) {
         prevNode = currNode
         currNode = currNode.next
       }
-      prevNode.next = new _Node(item, currNode);
     }
-    
+    currNode.next = new _Node(item, prevNode.next.next);
   }
 
   insertAt(item, position){
@@ -69,7 +68,7 @@ class LinkedList {
         currNode = currNode.next
         counter++
     }
-    prevNode.next = new _Node(item, currNode)
+    prevNode.next = new _Node(item, currNode.next)
     return currNode
   }
 
@@ -142,7 +141,7 @@ function main() {
   SLL.remove('Tauhida')
   SLL.remove('Apllo')
 
-  printLL(SLL)
+  //printLL(SLL)
 
   // console.log(size(SLL))
   // console.log(isEmpty(SLL))
@@ -151,7 +150,7 @@ function main() {
   // console.log(isEmpty(m))
   // console.log(findPrevious('Apollo', SLL))
   // console.log(findLast(SLL))
-  //console.log(listReverser(SLL))
+  // console.log(listReverser(SLL))
 }
 
 function printLL(list){
@@ -221,30 +220,30 @@ function findLast(list){
 
 }
 
-// function listReverser(list){
+function listReverser(list){ 
+  let curr = list.head; 
+  let prev = null; 
+  let next = null;
 
-//     let newList = new LinkedList
-//     newList = list
-//     console.log(newList)
-//     let curr = newList.head
-//     let prev = newList.head
-//     let counter = 0
+  while(curr) { 
+    next = curr.next 
+    curr.next = prev 
+    prev = curr 
+    curr = next 
+  }
 
-//     while(curr.next !== null){
-//       prev = curr
-//       curr = curr.next
-//       if(curr.next === null){
-//         this.head = curr
-//         for(let i=0; i < ){
+  list.head = prev
+  return prev
+}
 
-//         }
-//       }
-//     }
+function third(list) { 
+  let curr = list.head;
 
-//     return newList
-
-
-// }
+  while(curr.next.next.next !== null) { 
+    curr = curr.next; 
+  } 
+  return curr.value; 
+}
 
 
 main();
