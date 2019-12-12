@@ -150,12 +150,8 @@ function main() {
   // console.log(isEmpty(m))
   // console.log(findPrevious('Apollo', SLL))
   // console.log(findLast(SLL))
-<<<<<<< HEAD
-  //console.log(listReverser(SLL))
-  console.log(middleOfList(SLL))
-=======
   // console.log(listReverser(SLL))
->>>>>>> 995c5fd5c6617685c861f51bf80cbd626e5f2a20
+  console.log(middle(SLL))
 }
 
 function printLL(list){
@@ -225,39 +221,32 @@ function findLast(list){
 
 }
 
+function listReverser(list){ 
+  let curr = list.head; 
+  let prev = null; 
+  let next = null;
+
+  while(curr) { 
+    next = curr.next 
+    curr.next = prev 
+    prev = curr 
+    curr = next 
+  }
+
+  list.head = prev
+  return prev
+}
+
 function third(list) { 
   let curr = list.head;
 
-    while(curr.next.next.next !== null) { 
-        curr = curr.next; 
-    } 
+  while(curr.next.next.next !== null) { 
+    curr = curr.next; 
+  } 
   return curr.value; 
 }
 
-function listReverser(list){
-
-    let newList = new LinkedList
-    newList = list
-    console.log(newList)
-    let curr = newList.head
-    let prev = newList.head
-    let counter = 0
-
-    while(curr.next !== null){
-      prev = curr
-      curr = curr.next
-      if(curr.next === null){
-        this.head = curr
-      }
-    }
-
-    return newList
-
-
-}
-
 function middleOfList(list){
-
   let curr = list.head
   let middleElement = list.head
   let thisSize = size(list)
@@ -273,8 +262,6 @@ function middleOfList(list){
 
   return middleElement
 }
-
-
 
 main();
 
