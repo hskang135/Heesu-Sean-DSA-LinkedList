@@ -33,12 +33,11 @@ class LinkedList {
 
     if (this.head.value === key) {
       this.insertFirst(item);
-      return;
-    } 
-
-    while((currNode !== null) && (currNode.value !== key)) {
-      prevNode = currNode
-      currNode = currNode.next
+    } else {
+      while((currNode !== null) && (currNode.value !== key)) {
+        prevNode = currNode
+        currNode = currNode.next
+      }
     }
     prevNode.next = new _Node(item, currNode);
   }
@@ -109,6 +108,7 @@ function main() {
   SLL.insertBefore('Coffee', 'squirrel')
 
   console.log(SLL.find('Coffee','squirrel'));
+
 }
 
 main();
