@@ -34,7 +34,7 @@ class LinkedList {
     if (this.head.value === key) {
       this.insertFirst(item);
     } else {
-      while((currNode.next !== null) && (currNode.value !== key)) {
+      while((currNode !== null) && (currNode.value !== key)) {
         prevNode = currNode
         currNode = currNode.next
       }
@@ -49,13 +49,12 @@ class LinkedList {
     if (this.head.value === key) {
       this.insertFirst(item);
     } else {
-      while((currNode.next !== null) && (currNode.value !== key)) {
+      while((currNode !== null) && (currNode.value !== key)) {
         prevNode = currNode
         currNode = currNode.next
       }
-      prevNode.next = new _Node(item, currNode);
     }
-    
+    currNode.next = new _Node(item, prevNode.next.next);
   }
 
   insertAt(item, position){
@@ -69,7 +68,7 @@ class LinkedList {
         currNode = currNode.next
         counter++
     }
-    prevNode.next = new _Node(item, currNode)
+    prevNode.next = new _Node(item, currNode.next)
     return currNode
   }
 
@@ -151,8 +150,12 @@ function main() {
   // console.log(isEmpty(m))
   // console.log(findPrevious('Apollo', SLL))
   // console.log(findLast(SLL))
+<<<<<<< HEAD
   //console.log(listReverser(SLL))
   console.log(middleOfList(SLL))
+=======
+  // console.log(listReverser(SLL))
+>>>>>>> 995c5fd5c6617685c861f51bf80cbd626e5f2a20
 }
 
 function printLL(list){
