@@ -142,7 +142,7 @@ function main() {
   SLL.remove('Tauhida')
   SLL.remove('Apllo')
 
-  printLL(SLL)
+  //printLL(SLL)
 
   // console.log(size(SLL))
   // console.log(isEmpty(SLL))
@@ -152,6 +152,7 @@ function main() {
   // console.log(findPrevious('Apollo', SLL))
   // console.log(findLast(SLL))
   //console.log(listReverser(SLL))
+  console.log(middleOfList(SLL))
 }
 
 function printLL(list){
@@ -221,30 +222,55 @@ function findLast(list){
 
 }
 
-// function listReverser(list){
+function third(list) { 
+  let curr = list.head;
 
-//     let newList = new LinkedList
-//     newList = list
-//     console.log(newList)
-//     let curr = newList.head
-//     let prev = newList.head
-//     let counter = 0
+    while(curr.next.next.next !== null) { 
+        curr = curr.next; 
+    } 
+  return curr.value; 
+}
 
-//     while(curr.next !== null){
-//       prev = curr
-//       curr = curr.next
-//       if(curr.next === null){
-//         this.head = curr
-//         for(let i=0; i < ){
+function listReverser(list){
 
-//         }
-//       }
-//     }
+    let newList = new LinkedList
+    newList = list
+    console.log(newList)
+    let curr = newList.head
+    let prev = newList.head
+    let counter = 0
 
-//     return newList
+    while(curr.next !== null){
+      prev = curr
+      curr = curr.next
+      if(curr.next === null){
+        this.head = curr
+      }
+    }
+
+    return newList
 
 
-// }
+}
+
+function middleOfList(list){
+
+  let curr = list.head
+  let middleElement = list.head
+  let thisSize = size(list)
+
+  if(thisSize !== 0){
+    let middle = Math.floor(thisSize/2)
+    
+    for(let i=0; i<middle; i++){
+      curr = curr.next
+    }
+    middleElement = curr
+  }
+
+  return middleElement
+}
+
 
 
 main();
