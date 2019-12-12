@@ -33,15 +33,14 @@ class LinkedList {
 
     if (this.head.value === key) {
       this.insertFirst(item);
-    } else {
-      while((currNode !== null) && (currNode.value !== key)) {
-        prevNode = currNode
-        currNode = currNode.next
-      }
-    }
+      return;
+    } 
 
+    while((currNode !== null) && (currNode.value !== key)) {
+      prevNode = currNode
+      currNode = currNode.next
+    }
     prevNode.next = new _Node(item, currNode);
-    
   }
 
   find(item) { 
@@ -107,11 +106,9 @@ function main() {
   SLL.insertFirst('Starbuck')
   SLL.insertFirst('Tauhida')
   SLL.remove('squirrel')
-  SLL.insertBefore('Coffee')
-  SLL.insertBefore('squirrel')
+  SLL.insertBefore('Coffee', 'squirrel')
 
   console.log(SLL.find('Coffee','squirrel'));
-
 }
 
 main();
